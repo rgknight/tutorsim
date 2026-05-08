@@ -5,12 +5,9 @@ body {
 .title,
 .subtitle,
 .publication-title,
-.publication-subtitle {
+.publication-subtitle,
+.publication-authors {
   font-family: 'Google Sans', sans-serif;
-}
-
-.publication-title {
-  font-variant: small-caps;
 }
 
 .publication-subtitle {
@@ -23,16 +20,32 @@ body {
   margin-bottom: 0.25rem;
 }
 
-.publication-links {
-  margin-top: 1.5rem;
+.publication-authors a {
+  color: hsl(204, 86%, 53%) !important;
 }
 
-.publication-links .link-block {
-  margin-right: 0.25rem;
+.publication-authors a:hover {
+  text-decoration: underline;
 }
 
 .author-block {
+  display: inline-block;
   margin-right: 0.5em;
+}
+
+.funding-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.funding-logos .funder-logo {
+  max-height: 72px;
+  width: auto;
+  object-fit: contain;
 }
 
 .status-badge {
@@ -48,7 +61,7 @@ a:hover {
 }
 
 .hero-body {
-  padding: 6rem 1.5rem 4rem;
+  padding: 6rem 1.5rem 1.5rem;
 }
 
 .footer {

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TutorSim</title>
-  <meta name="description" content="TutorSim — simulating tutoring conversations to study and improve K-12 math instruction.">
+  <meta name="description" content="TutorSim: A transcript-grounded harness for AI tutor benchmarking using synthetic students">
 
   <link rel="icon" type="image/svg+xml" href="./static/images/favicon.svg">
 
@@ -34,57 +34,25 @@
           <h1 class="title is-1 publication-title">TutorSim</h1>
           <!-- TODO: replace tagline with final copy -->
           <h2 class="subtitle is-3 publication-subtitle">
-            Simulating tutoring conversations to study and improve K-12 math instruction.
+            A transcript-grounded harness for AI tutor benchmarking using synthetic students
           </h2>
 
-          <div class="status-badge">
-            <span class="tag is-warning is-light is-medium">Project site under development</span>
-          </div>
-
-          <!-- TODO: add additional team members and affiliations -->
           <div class="is-size-5 publication-authors">
-            <span class="author-block">
-              Ryan Knight<sup>1</sup>
-            </span>
+            <span class="author-block">Ryan Knight<sup>1</sup>,</span>
+            <span class="author-block">Albert Zhang<sup>1</sup>,</span>
+            <span class="author-block">Lucy Li<sup>2</sup>,</span>
+            <span class="author-block">Kyle Lo<sup>3</sup>,</span>
+            <span class="author-block">Julian Bernado<sup>4</sup>,</span>
+            <span class="author-block">Ana Ribeiro<sup>4</sup>,</span>
+            <span class="author-block">Rebecca Bowie<sup>1</sup>,</span>
+            <span class="author-block">Susanna Loeb<sup>5</sup></span>
           </div>
-
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>InSource Services</span>
-          </div>
-
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- TODO: replace mailto with the contact email you want public -->
-              <span class="link-block">
-                <a href="mailto:rknight@insourceservices.com"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fas fa-envelope"></i></span>
-                  <span>Contact</span>
-                </a>
-              </span>
-              <!--
-                Uncomment and edit when ready:
-
-                <span class="link-block">
-                  <a href="#" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                    <span>Paper</span>
-                  </a>
-                </span>
-                <span class="link-block">
-                  <a href="#" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="fab fa-github"></i></span>
-                    <span>Code</span>
-                  </a>
-                </span>
-                <span class="link-block">
-                  <a href="#" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="far fa-images"></i></span>
-                    <span>Data</span>
-                  </a>
-                </span>
-              -->
-            </div>
+            <span class="author-block"><sup>2</sup>University of Wisconsin&ndash;Madison</span>
+            <span class="author-block"><sup>3</sup>Allen Institute for AI</span>
+            <span class="author-block"><sup>4</sup>Stanford SCALE</span>
+            <span class="author-block"><sup>5</sup>Stanford University</span>
           </div>
         </div>
       </div>
@@ -96,18 +64,33 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <!-- TODO: rewrite with the real project description -->
+        <div class="status-badge has-text-centered">
+          <span class="tag is-warning is-light is-medium">Project site under development</span>
+        </div>
+        <h2 class="title is-2" style="margin-top: 32px;">Abstract</h2>
+        <div class="content has-text-left is-size-5" style="margin-top: 32px;">
           <p>
-            TutorSim is a research project exploring how simulated tutoring conversations
-            can be used to study, evaluate, and improve K-12 math instruction. By pairing
-            language models with grounded representations of student work, we aim to build
-            tools that help teachers and tutors deliver more effective one-on-one support.
+            TutorSim is a harness for benchmarking AI tutors that transfers expert teachers' analysis
+            of real human-student tutoring sessions to replays between synthetic students and AI tutors.
           </p>
           <p>
-            This site is a placeholder while the project is in active development.
-            Check back soon for datasets, code, and findings.
+            Expert teachers reviewed real student&ndash;tutor transcripts and flagged <em>key learning moments</em> &mdash; points in a session
+            that are pivotal for one of two pedagogical constructs: <strong>scaffolding vs.
+            rigor</strong> (staying inside the student's zone of proximal development) and
+            <strong>rapport building</strong>. 
+          </p>
+          <p>
+            At each key moment, teachers wrote situation&ndash;action&ndash;result (SAR) caption annotations: 
+            why the moment matters, what the human tutor actually did, and how the student responded.
+          </p>
+          <p>
+            To benchmark a language model, we replay a transcript up to a key learning moment and
+            then hand the conversation to a synthetic student paired with the LM tutor. 
+            A synthetic SAR annotator captions the AI's action and the simulated student's
+            reaction; a classifier judges the result as <em>effective</em>,
+            <em>partially effective</em>, or <em>ineffective</em>. The output is a profile of, 
+            when faced with different scenarios (the sitution), what pedagogical choices the LM made (the action), 
+            and the impact of that choice on the synthetic student's behavior (the result).
           </p>
         </div>
       </div>
@@ -117,12 +100,16 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Team</h2>
-    <!-- TODO: add the rest of the team -->
-    <div class="columns is-multiline is-centered">
-      <div class="column is-one-third has-text-centered">
-        <p class="title is-5">Ryan Knight</p>
-        <p class="subtitle is-6">InSource Services</p>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-2" style="margin-top: 64px;">Funding</h2>
+        <div class="content has-text-left is-size-5" style="margin-top: 32px;">
+          <p>This work is supported by the Gates Foundation and the Chan Zuckerberg Initiative.</p>
+        </div>
+        <div class="funding-logos">
+          <img src="./static/images/gates-foundation.png" alt="Gates Foundation" class="funder-logo">
+          <img src="./static/images/czi.png" alt="Chan Zuckerberg Initiative" class="funder-logo">
+        </div>
       </div>
     </div>
   </div>
