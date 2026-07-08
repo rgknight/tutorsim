@@ -308,8 +308,8 @@
           stroke: INK, "stroke-width": 1.6, "stroke-dasharray": "5 3"
         }, svg);
         attachHover(hb, function () {
-          return '<div class="tt-title">Human tutors</div>' +
-            ttRow(c.label, fmtPct(c.human));
+          return '<div class="tt-title">' + c.label + "</div>" +
+            ttRow("Human tutors", fmtPct(c.human));
         });
       });
 
@@ -338,8 +338,8 @@
           markerNode(s.marker, px, py, 6, s.color, seriesGroups[d.id]);
           var hit = el("circle", { cx: px, cy: py, r: 12, fill: "transparent", cursor: "pointer" }, hitLayer);
           attachHover(hit, function () {
-            return '<div class="tt-title">' + d.name + "</div>" +
-              ttRow(c.label, fmtPct(v)) +
+            return '<div class="tt-title">' + c.label + "</div>" +
+              ttRow(d.name, fmtPct(v)) +
               ttRow("Human tutors", fmtPct(c.human));
           });
           hit.addEventListener("mouseenter", function () { highlight(d.id); });
