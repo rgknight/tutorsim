@@ -308,8 +308,8 @@
           stroke: INK, "stroke-width": 1.6, "stroke-dasharray": "5 3"
         }, svg);
         attachHover(hb, function () {
-          return '<div class="tt-title">Human tutors</div>' +
-            ttRow(c.label, fmtPct(c.human));
+          return '<div class="tt-title">' + c.label + "</div>" +
+            ttRow("Human tutors", fmtPct(c.human));
         });
       });
 
@@ -338,8 +338,8 @@
           markerNode(s.marker, px, py, 6, s.color, seriesGroups[d.id]);
           var hit = el("circle", { cx: px, cy: py, r: 12, fill: "transparent", cursor: "pointer" }, hitLayer);
           attachHover(hit, function () {
-            return '<div class="tt-title">' + d.name + "</div>" +
-              ttRow(c.label, fmtPct(v)) +
+            return '<div class="tt-title">' + c.label + "</div>" +
+              ttRow(d.name, fmtPct(v)) +
               ttRow("Human tutors", fmtPct(c.human));
           });
           hit.addEventListener("mouseenter", function () { highlight(d.id); });
@@ -394,6 +394,23 @@
   }
   window.addEventListener("resize", fitAnimation);
   fitAnimation();
+
+  // The animation autoplays as soon as the iframe loads, which is well before
+  // the reader scrolls to it. Restart it from the top the first time the card
+  // actually comes into view (same-origin, so we can click its restart button).
+  document.querySelectorAll(".animation-card iframe").forEach(function (ifr) {
+    new IntersectionObserver(function (entries, observer) {
+      if (!entries.some(function (e) { return e.isIntersecting; })) return;
+      observer.disconnect();
+      var tries = 0;
+      (function restart() {
+        var doc = ifr.contentDocument;
+        var btn = doc && doc.getElementById("btnReplay");
+        if (btn) return btn.click();
+        if (++tries < 40) setTimeout(restart, 250); // animation may still be booting
+      })();
+    }, { threshold: 0.4 }).observe(ifr.parentElement);
+  });
 
   /* ---------- boot ---------- */
 
