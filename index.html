@@ -90,16 +90,16 @@
 
     <div>
       <div class="animation-card">
-        <iframe src="./static/animation/index.html" title="Animated walkthrough of the TutorSim replay pipeline" loading="lazy"></iframe>
+        <iframe src="./static/animation/index.html?v=2" title="Animated walkthrough of the TutorSim replay pipeline" loading="lazy"></iframe>
       </div>
-      <p class="animation-caption">The TutorSim pipeline, step by step. Press play to walk through a replay.</p>
+      <p class="animation-caption">The TutorSim pipeline, step by step. Use controls to walk through a replay.</p>
     </div>
 
     <div class="prose">
       <h2>Replaying from key learning moments</h2>
       <p>
         Ask a good math tutor for help and you'll likely get a question back: <em>"what do you know about
-        what the problem is asking?"</em> The tutor isn't being unhelpful by asking a question back; they are diagnosing what
+        what the problem is asking?"</em> The tutor isn't being unhelpful by asking a question back. Instead, they are diagnosing what
         type of support may be needed. Language models, though, are trained to be a "helpful assistant".
         TutorSim-Preview assesses whether the LM's helpful assistant character traits interfere with the core
         skills of a tutor: diagnosing the right level of support vs push to provide at a given moment in order to maintain the productive
@@ -118,7 +118,7 @@
       <p>
         Told only to "tutor well," models tend to over-help — giving too much support and rarely pushing
         students to do deeper thinking. Spelling out the trade-off in the prompt lifts every score, but  models still differ widely
-        in how reliably they make that . We also find that human tutors deploy more diverse strategies than LM tutors.
+        in how reliably they make that shift. We also find that prompting models to push rigor concentraits model behavior on fewer rigor-pushing strategies than human tutors deploy.
       </p>
     </div>
   </div>
@@ -225,6 +225,6 @@
 
 <div class="chart-tooltip" id="chart-tooltip" role="status"></div>
 
-<script src="./static/js/main.js?v=6"></script>
+<script src="./static/js/main.js?v=7"></script>
 </body>
 </html>
